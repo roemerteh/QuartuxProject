@@ -34,7 +34,7 @@ expected results:
 {"timestamp":"2025-10-01T06:37:55","level":"INFO","msg":"start Server"}
 {"timestamp":"2025-10-01T06:38:38","level":"INFO","msg":"status request received"}
 {"timestamp":"2025-10-01T06:38:57","level":"INFO","msg":"stop Server waiting for thread"}
-{"timestamp":"2025-10-01T06:42:10","level":"INFO","msg":"start Server"}
+{"timestamp":"2025-10-01T06:42:10","level":"INFO","msg":"startï¿½Server"}
 ```	
 
 monitor
@@ -50,7 +50,7 @@ expected results:
 {"timestamp":"2025-10-01T16:37:25","level":"INFO","msg":"2 Pressure 60 2025-09-26 13:38:49"}
 {"timestamp":"2025-10-01T16:37:25","level":"WARNING","msg":"threshold exceeded"}
 {"timestamp":"2025-10-01T16:37:25","level":"INFO","msg":"3 Humidity 30 2025-09-26 13:38:49"}
-{"timestamp":"2025-10-01T16:37:25","level":"INFO","msg":"processed 3 rows."}
+{"timestamp":"2025-10-01T16:37:25","level":"INFO","msg":"processedï¿½3ï¿½rows."}
 ```
 ### support dynamic configuration
 this application support dynamic configuration
@@ -74,7 +74,7 @@ in terminal where server was launched is displayed:
 in /var/log/server_service.log can see those new lines:
 ```bash
 {"timestamp":"2025-10-01T06:43:02","level":"INFO","msg":"stop Server waiting for thread"}
-{"timestamp":"2025-10-01T16:35:44","level":"INFO","msg":"start Server"}
+{"timestamp":"2025-10-01T16:35:44","level":"INFO","msg":"startï¿½Server"}
 ```
 it means that the server was restarted
 and now the request can made to this new port
@@ -87,21 +87,21 @@ server and monitor only are restarted if the configuration affects them
 
 	QuartuxProject
 	+-- bin					# binary executable
-	¦   +-- QMonitor		
+	ï¿½ï¿½ï¿½ +-- QMonitor		
 	+-- config				# configuration file for BD and server
-	¦   +-- config.json		
+	ï¿½ï¿½ï¿½ +-- config.json		
 	+-- Makefile
 	+-- README.md
 	+-- src					# source code
-	¦   +-- Config.cpp
-	¦   +-- Config.h
-	¦   +-- Logger.cpp
-	¦   +-- Logger.h
-	¦   +-- main.cpp
-	¦   +-- Monitor.cpp
-	¦   +-- Monitor.h
-	¦   +-- RestServer.cpp
-	¦   +-- RestServer.h
+	ï¿½ï¿½ï¿½ +-- Config.cpp
+	ï¿½ï¿½ï¿½ +-- Config.h
+	ï¿½ï¿½ï¿½ +-- Logger.cpp
+	ï¿½ï¿½ï¿½ +-- Logger.h
+	ï¿½ï¿½ï¿½ +-- main.cpp
+	ï¿½ï¿½ï¿½ +-- Monitor.cpp
+	ï¿½ï¿½ï¿½ +-- Monitor.h
+	ï¿½ï¿½ï¿½ +-- RestServer.cpp
+	ï¿½ï¿½ï¿½ +-- RestServer.h
 	+-- utils				# external libraries
 		+-- httplib.h
 		+-- json.hpp
@@ -130,4 +130,8 @@ make install-log
 ./bin/QMonitor
 ```
 
+## generate Docxygen
+```bash
+doxygen Doxyfile
+```
 

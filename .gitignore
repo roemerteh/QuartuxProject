@@ -3,3 +3,8 @@ bin/
 
 #external libraries
 #utils/
+
+#doxyfiles
+html/
+latex/
+#Doxyfile

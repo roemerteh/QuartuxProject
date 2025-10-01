@@ -6,7 +6,8 @@
 
 using json = nlohmann::json;
 
-Config Config::loadFromFile(const std::string &path) {
+Config Config::loadFromFile(const std::string &path) 
+{
     Config cfg;
     std::ifstream ifs(path);
     if (!ifs.is_open()) {

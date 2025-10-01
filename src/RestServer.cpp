@@ -10,12 +10,14 @@ using namespace httplib;
 RestServer::RestServer(Monitor &monitor, int port)
     : monitor_(monitor), port_(port) {}
 
-RestServer::~RestServer() {
+RestServer::~RestServer() 
+{
     stop();
 }
 
 void RestServer::setconfig(int port)
 {
+    LoggerManager::Get("server").log("INFO", "setting a new port");
     port_= port;
 }
 
@@ -32,16 +34,29 @@ void RestServer::start()
 
     LoggerManager::Get("server").log("INFO", "start Server");
     running_ = true;
-    server_thread_ = std::thread([this]() {
-        //Server svr;
 
+    // creating a thread linked to a lambda function with a server listenign in port: port_
+    server_thread_ = std::thread([this]() {
+
+        // processing status petitions 
         svr.Get("/status", [this](const Request& req, Response& res) {
+
+            // writing log in Server logfile using manager logger
             LoggerManager::Get("server").log("INFO", "status request received");
+
+            // getting a status structure from Monitor
             auto st = monitor_.get_status();
             json j;
-            if (st.last_check.has_value()) {
+
+            // status.last_check is a std::optinal data and can or not a string value
+            if (st.last_check.has_value()) 
+            {
+                // if has value assign the value obteined
                 j["last_check"] = st.last_check.value();
-            } else {
+            } 
+            else 
+            {
+                // if don't, assign nullptr
                 j["last_check"] = nullptr;
             }
             j["rows_processed"] = st.rows_processed;
@@ -64,11 +79,13 @@ void RestServer::start()
             }
         });
 
+        // listen for petitions at port port_
         svr.listen("0.0.0.0", port_);
     });
 }
 
-void RestServer::stop() {
+void RestServer::stop() 
+{
     if (!running_) return;
     LoggerManager::Get("server").log("INFO", "stop Server waiting for thread");
     running_ = false;

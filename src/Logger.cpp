@@ -10,10 +10,13 @@
 using json = nlohmann::json;
 using ordered_json = nlohmann::ordered_json;
 
+std::map<std::string, std::unique_ptr<Logger>> LoggerManager::loggers;
+std::map<std::string, std::string> 
+                LoggerManager::loggerFiles={{"monitor","/var/log/monitor_service.log"}, {"server","/var/log/server_service.log"}};
+
 Logger::Logger(const std::string &path)
 {
-    _path = path; //"/var/log/monitor_service.log";
-    //_path = "./monitor_service.log";
+    _path = path; 
     _file.open(_path, std::ios::out | std::ios::app);
     if (!_file.is_open())
     {
@@ -28,14 +31,7 @@ Logger::~Logger()
         _file.close();
     }
 }
-/*
-Logger & Logger::GetInstance()
-{
-    static Logger instance;
 
-    return (instance);
-}
-*/
 void Logger::log(const std::string &level, const std::string &msg)
 {
     std::unique_lock<std::mutex> ul(m);
@@ -45,7 +41,6 @@ void Logger::log(const std::string &level, const std::string &msg)
     log_json["msg"]=msg;
 
     _file << log_json.dump() << std::endl;
-    //std::cout << "write logger: " << log_json.dump() << std::endl;
 }
 
 std::string Logger::timestamp()
@@ -63,7 +58,6 @@ std::string Logger::timestamp()
 
 Logger & LoggerManager::Get(const std::string &name)
 {
-    
     auto it = loggers.find(name);
     if (it==loggers.end())
     {
@@ -72,8 +66,3 @@ Logger & LoggerManager::Get(const std::string &name)
             
     return *loggers[name];
 }
-
-
-std::map<std::string, std::unique_ptr<Logger>> LoggerManager::loggers;
-std::map<std::string, std::string> LoggerManager::loggerFiles={{"monitor","/var/log/monitor_service.log"}, 
-                                                              {"server","/var/log/server_service.log"}};
