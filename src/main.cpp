@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
                     monitor.restart();                    
                 }    
 
-                // wait 1 second to  Monitor can retart
+                // wait 1 second to  Monitor can restart
                 std::this_thread::sleep_for(std::chrono::seconds(1));
 
                 if (changes.second)
