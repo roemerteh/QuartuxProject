@@ -87,8 +87,11 @@ server and monitor only are restarted if the configuration affects them
 	QuartuxProject
 	├── bin				# binary executable
 	│   └── QMonitor
-	├── config			# configuration file for BD and server
+	├── config			# configuration file for DB and server
 	│   └── config.json
+	├── sql				 
+	│   ├── init.sql	# initial configuration of DB
+	│   ├── insert.sql	# inserting 10 new records 
 	├── Doxyfile
 	├── Makefile
 	├── README.md
@@ -134,3 +137,21 @@ make install-log
 doxygen Doxyfile
 ```
 
+## initial SQL configuration
+This is a script available in sql/init.sql file 
+```sql
+CREATE DATABASE IF NOT EXISTS monitoring;
+USE monitoring;
+
+CREATE TABLE IF NOT EXISTS metrics (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100),
+	value INT,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO metrics (name, value) VALUES
+('Temperature', 42),
+('Pressure', 60),
+('Humidity', 30);
+```
