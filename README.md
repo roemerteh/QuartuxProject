@@ -89,6 +89,8 @@ server and monitor only are restarted if the configuration affects them
 	│   └── QMonitor
 	├── config			# configuration file for DB and server
 	│   └── config.json
+	├── test			# test scenarios 
+	│   └── TestScenarios.pdf	# some test scenarios with evidences are described in pdf file
 	├── sql				 
 	│   ├── init.sql	# initial configuration of DB
 	│   ├── insert.sql	# inserting 10 new records 
@@ -155,3 +157,5 @@ INSERT INTO metrics (name, value) VALUES
 ('Pressure', 60),
 ('Humidity', 30);
 ```
+
+## test scenarios
