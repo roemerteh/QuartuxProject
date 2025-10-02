@@ -1,6 +1,9 @@
 #binaries
 bin/
 
+#vscode
+.vscode/
+
 #external libraries
 #utils/
 
