@@ -84,27 +84,27 @@ curl http:://127.0.0.0:8090/status
 server and monitor only are restarted if the configuration affects them
 	
 ## project structure
-QuartuxProject
-├── bin				# binary executable
-│   └── QMonitor
-├── config			# configuration file for BD and server
-│   └── config.json
-├── Doxyfile
-├── Makefile
-├── README.md
-├── src				# source code
-│   ├── Config.cpp
-│   ├── Config.h
-│   ├── Logger.cpp
-│   ├── Logger.h
-│   ├── main.cpp
-│   ├── Monitor.cpp
-│   ├── Monitor.h
-│   ├── RestServer.cpp
-│   └── RestServer.h
-└── utils			# external libraries
-    ├── httplib.h
-    └── json.hpp
+	QuartuxProject
+	├── bin				# binary executable
+	│   └── QMonitor
+	├── config			# configuration file for BD and server
+	│   └── config.json
+	├── Doxyfile
+	├── Makefile
+	├── README.md
+	├── src				# source code
+	│   ├── Config.cpp
+	│   ├── Config.h
+	│   ├── Logger.cpp
+	│   ├── Logger.h
+	│   ├── main.cpp
+	│   ├── Monitor.cpp
+	│   ├── Monitor.h
+	│   ├── RestServer.cpp
+	│   └── RestServer.h
+	└── utils			# external libraries
+		├── httplib.h
+	    └── json.hpp
 
 ## requirements
 - Compilador C++17 (`g++`).
