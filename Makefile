@@ -1,6 +1,8 @@
 # Compiler and flags
 CXX := g++
 
+BINDIR = bin
+
 ifeq ($(OS),Windows_NT)
 #WINDOWS
 	CXXFLAGS := -std=c++17 -Wall -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -Iutils -I"C:\Program Files\MySQL\mysql-connector-c-6.1.11-winx64\include"
@@ -19,6 +21,7 @@ SRC := src/main.cpp src/Monitor.cpp src/Config.cpp src/RestServer.cpp src/Logger
 
 # Build rule
 $(TARGET): $(SRC)
+	@mkdir -p $(BINDIR)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 MONITORLOGFILE=/var/log/monitor_service.log
