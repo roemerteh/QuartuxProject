@@ -159,3 +159,4 @@ INSERT INTO metrics (name, value) VALUES
 ```
 
 ## test scenarios
+Some test scenarios are described in test/TestScenarios.pdf with images and evidences
