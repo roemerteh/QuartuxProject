@@ -4,6 +4,6 @@
     "mysql_password": "pass123",
     "mysql_db": "monitoring",
     "query_interval": 10,
-    "rest_port": 8090,
+    "rest_port": 8080,
     "threshold": 50
 }
